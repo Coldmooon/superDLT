@@ -62,6 +62,8 @@ def takeLook(your_number, one_hot_matrix, T):
     
     # Iterate through each element in Y
     for element in your_number:
+        if element == 0:
+            continue
         column_index = int(element) - 1
         one_hot_vec[0, column_index] = 1
    
@@ -79,12 +81,12 @@ def takeLook(your_number, one_hot_matrix, T):
     for value, positions in collision_dict.items():
         count = len(positions)
         if count > 0:
-            print("\n重了 " + str(value) + " 个数的有 " + str(count) + " 次，分别在：")
+            print("\n* 重了 " + str(value) + " 个数的有 " + str(count) + " 次，分别在：")
     #         print(f"Value {value}: {positions} \n")
             for pos in positions:
-                print("  :", T[pos]['lotteryDrawNum'], " 期")
+                print("  |--", T[pos]['lotteryDrawNum'], " 期")
         else:
-            print("\n没有重了 " + str(value) + " 个数的情况。")
+            print("\n* 没有重了 " + str(value) + " 个数的情况。")
  
     return res
     
